@@ -20,8 +20,9 @@ public class EmployeeDao {
         return jdbcTemplate.query("SELECT * FROM EMPLOYEE", new EmployeeRowMapper());
     }
 
-    public int addEmployee(final String firstName, String lastName) {
-        return jdbcTemplate.update("INSERT INTO EMPLOYEE (FIRST_NAME, LAST_NAME) VALUES (?, ?)", firstName, lastName);
+    public int addEmployee(final String firstName, String lastName, String country) {
+        return jdbcTemplate.update("INSERT INTO EMPLOYEE (FIRST_NAME, LAST_NAME, COUNTRY) VALUES (?, ?, ?)",
+                firstName, lastName, country);
     }
 
     private static final class EmployeeRowMapper implements RowMapper<Employee> {
@@ -30,7 +31,8 @@ public class EmployeeDao {
         public Employee mapRow(final ResultSet rs, final int rowNum) throws SQLException {
             final Employee employee = new Employee(rs.getLong("ID"),
                                                    rs.getString("FIRST_NAME"),
-                                                   rs.getString("LAST_NAME"));
+                                                   rs.getString("LAST_NAME"),
+                                                   rs.getString("COUNTRY"));
             return employee;
         }
 

@@ -17,8 +17,8 @@ public class EmployeeController {
 
     @PostMapping(path = "/addEmployee")
     public @ResponseBody
-    String addEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        employeeDao.addEmployee(firstName, lastName);
+    String addEmployee(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String country) {
+        employeeDao.addEmployee(firstName, lastName, country);
         return "Saved Employee";
     }
 
