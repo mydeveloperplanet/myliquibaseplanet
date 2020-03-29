@@ -20,8 +20,8 @@ public class EmployeeDao {
         return jdbcTemplate.query("SELECT * FROM EMPLOYEE", new EmployeeRowMapper());
     }
 
-    public int addEmployee(final String firstName, String lastName, String country) {
-        return jdbcTemplate.update("INSERT INTO EMPLOYEE (FIRST_NAME, LAST_NAME, COUNTRY) VALUES (?, ?, ?)",
+    public void addEmployee(final String firstName, String lastName, String country) {
+        jdbcTemplate.update("INSERT INTO EMPLOYEE (FIRST_NAME, LAST_NAME, COUNTRY) VALUES (?, ?, ?)",
                 firstName, lastName, country);
     }
 
@@ -29,11 +29,10 @@ public class EmployeeDao {
 
         @Override
         public Employee mapRow(final ResultSet rs, final int rowNum) throws SQLException {
-            final Employee employee = new Employee(rs.getLong("ID"),
-                                                   rs.getString("FIRST_NAME"),
-                                                   rs.getString("LAST_NAME"),
-                                                   rs.getString("COUNTRY"));
-            return employee;
+            return new Employee(rs.getLong("ID"),
+                                rs.getString("FIRST_NAME"),
+                                rs.getString("LAST_NAME"),
+                                rs.getString("COUNTRY"));
         }
 
     }
