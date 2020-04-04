@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MyliquibaseplanetApplication {
+public class MyliquibasePlanetApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MyliquibaseplanetApplication.class, args);
+		SpringApplication.run(MyliquibasePlanetApplication.class, args);
 	}
 
 }
