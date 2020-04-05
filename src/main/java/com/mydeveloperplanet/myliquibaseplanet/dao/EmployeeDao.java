@@ -20,7 +20,12 @@ public class EmployeeDao {
         return jdbcTemplate.query("SELECT * FROM EMPLOYEE", new EmployeeRowMapper());
     }
 
-    public void addEmployee(final String firstName, String lastName, String country) {
+    public Employee getEmployee(final String firstName, final String lastName, final String country) {
+        return jdbcTemplate.queryForObject("SELECT * FROM EMPLOYEE WHERE FIRST_NAME = ? AND LAST_NAME = ? AND COUNTRY = ?",
+                new EmployeeRowMapper(), firstName, lastName, country);
+    }
+
+    public void addEmployee(final String firstName, final String lastName, final String country) {
         jdbcTemplate.update("INSERT INTO EMPLOYEE (FIRST_NAME, LAST_NAME, COUNTRY) VALUES (?, ?, ?)",
                 firstName, lastName, country);
     }
