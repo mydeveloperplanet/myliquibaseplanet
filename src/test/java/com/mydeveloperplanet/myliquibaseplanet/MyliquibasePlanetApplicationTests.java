@@ -34,7 +34,7 @@ class MyliquibasePlanetApplicationTests {
 	private MockMvc mockMvc;
 
 	@Autowired
-	JdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 
 	@Autowired
 	private EmployeeDao employeeDao;
