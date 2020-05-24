@@ -39,16 +39,6 @@ class MyliquibasePlanetApplicationTests {
 	@Autowired
 	private EmployeeDao employeeDao;
 
-	@Container
-	static PostgreSQLContainer<?> postgreSQL = new PostgreSQLContainer<>();
-
-	@DynamicPropertySource
-	static void postgreSQLProperties(DynamicPropertyRegistry registry) {
-		registry.add("spring.datasource.url", postgreSQL::getJdbcUrl);
-		registry.add("spring.datasource.username", postgreSQL::getUsername);
-		registry.add("spring.datasource.password", postgreSQL::getPassword);
-	}
-
 	@Test
 	void contextLoads() {
 	}
